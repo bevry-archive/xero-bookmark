@@ -44,6 +44,13 @@
 					
 					// Apply
 					var applyFunction = function(){
+						// Check if we still have a value
+						// If we do, then postpone
+						if ( $categories.filter(':last').val() ) {
+							setTimeout(applyFunction,750);
+							return false;
+						}
+						
 						// Apply Category
 						$categories.val(category);
 						
@@ -53,7 +60,7 @@
 						// Save Change
 						$checkedTransasctions.find('td.expand a.ok_button').trigger('click');
 					};
-					setTimeout(applyFunction,750);
+					applyFunction();
 				};
 				setTimeout(prepareFunction,200);
 			});
