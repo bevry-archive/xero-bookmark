@@ -16,8 +16,7 @@
 				$categoriseAll = $('<button>Categorise Selected</button>').appendTo($toolbar),
 				$addCheckboxes = $('<button>Add Checkboxes</button>').appendTo($toolbar),
 				$transactions = $('tr.x-transgrid-row.transactional'),
-				$checkbox = $('<input type="checkbox" class="multi"/>'),
-				addCheckboxes = ;
+				$checkbox = $('<input type="checkbox" class="multi"/>');
 			
 			// Bind Event to $addCheckboxes
 			$addCheckboxes.click(function(){
