@@ -12,10 +12,16 @@
 		$(function(){
 			// Prepare
 			var	$toolbar = $('.x-toolbar-left:has(.xtb-text)'),
-				$categoriseAll = $('<button>Categorise All</button>').appendTo($toolbar),
+				$selectAll = $('<button>Select All</button>').appendTo($toolbar),
+				$categoriseAll = $('<button>Categorise Selected</button>').appendTo($toolbar),
 				$transactions = $('tr.x-transgrid-row.transactional'),
 				$checkbox = $('<input type="checkbox" class="multi"/>');
-
+			
+			// Bind Event to $selectAll
+			$selectAll.click(function(){
+				$transactions.find(':checkbox.multi').attr('checked', true);
+			});
+			
 			// Bind Event to $categoriseAll
 			$categoriseAll.click(function(){
 				// Fetch Category
