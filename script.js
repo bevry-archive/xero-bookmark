@@ -46,12 +46,12 @@
 
 			// Add Checkboxes
 			$transactions.find('td:first-child').click(function(){
-				var $td = $(this);
+				var $td = $(this),
+					$parent = $td.parent();
 				var killOpen = function(){
-					$td.parent().removeClass('opened');
+					$parent.removeClass('opened');
 				};
-				killOpen();
-				for ( var i = 0, n = 1000; i<=n; i+=100 ) {
+				for ( var i = 0, n = 1000; i<=n; i+=50 ) {
 					setTimeout(killOpen, i);
 				}
 			}).prepend($checkbox);
