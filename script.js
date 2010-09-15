@@ -31,17 +31,29 @@
 				}
 				
 				// Filter
-				var $checkedTransasctions = $transactions.filter(':has(:checkbox.multi:checked)');
+				var $checkedTransasctions = $transactions.filter(':has(:checkbox.multi:checked)'),
+					$categories = $checkedTransasctions.find('td.expand div.fields.edit-name label.category :text');
 				
 				// Open Edit Box
 				$checkedTransasctions.addClass('opened');
 				
-				// Apply Category
-				$checkedTransasctions.find('td.expand div.fields.edit-name label.category :text').val(category);
-				
-				// Save Change
-				// $checkedTransasctions.find('td.expand a.ok_button').trigger('click');
-				// Can't get this to work
+				// Prepare
+				setTimeout(function(){
+					// Prepare Category
+					$categories.trigger('focus');
+					
+					// Apply
+					setTimeout(function(){
+						// Apply Category
+						$categories.val(category);
+						
+						// Make Buttons Blue
+						$checkedTransasctions.find('.small.blue.button:has(> a.ok_button)').removeClass('disabled gray');
+						
+						// Save Change
+						$checkedTransasctions.find('td.expand a.ok_button').trigger('click');
+					},200);
+				},200);
 			});
 
 			// Add Checkboxes
