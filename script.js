@@ -32,7 +32,10 @@
 				
 				// Filter
 				var $checkedTransasctions = $transactions.filter(':has(:checkbox.multi:checked)'),
-					$categories = $checkedTransasctions.find('td.expand div.fields.edit-name label.category :text');
+					getCategories = function(){
+						$checkedTransasctions.find('td.expand div.fields.edit-name label.category :text')
+					},
+					$categories = getCategories();
 				
 				// Open Edit Box
 				$checkedTransasctions.addClass('opened');
@@ -44,6 +47,9 @@
 					
 					// Apply
 					var applyFunction = function(){
+						// Update Categories
+						$categories = getCategories();
+						
 						// Check if we still have a value
 						// If we do, then postpone
 						if ( $categories.filter(':last').val() ) {
