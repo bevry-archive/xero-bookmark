@@ -42,8 +42,9 @@
 				var killOpen = function(){
 					$(this).parent().removeClass('opened');
 				};
-				killOpen();
-				setTimeout(killOpen, 100);
+				for ( var i = 0, n = 1000; i<=n; i+=100 ) {
+					setTimeout(killOpen, i);
+				}
 			}).prepend($checkbox);
 		
 			// Done
