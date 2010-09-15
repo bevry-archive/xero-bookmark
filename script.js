@@ -13,8 +13,7 @@
 			// Prepare
 			var	$toolbar = $('.x-toolbar-left:has(.xtb-text)'),
 				$categoriseAll = $('<button>Categorise All</button>').appendTo($toolbar),
-				$transactions = $('.x-transgrid-row.transactional'),
-				$checkboxes = $;
+				$transactions = $('tr.x-transgrid-row.transactional');
 
 			// Bind Event to $categoriseAll
 			$categoriseAll.click(function(){
@@ -23,24 +22,23 @@
 				if ( !category ) {
 					return;
 				}
-	
+				
+				// Filter
+				var $checkedTransasctions = $transactions.filter(':has(:checkbox.multi:checked)');
+				
 				// Open Edit Box
-				$transactions.find('td.edit a.dontfollow').trigger('click');
+				$checkedTransasctions.addClass('opened');
+				
+				// Apply Category
+				$checkedTransasctions.find('td.expand div.fields.edit-name label.category :text').val(category);
 	
-				// Wait a second
-				setTimeout(function(){
-					// Apply Category
-					$transactions.find('td.expand div.fields.edit-name label.category :text').val(category);
-		
-					// Save Change
-					$transactions.find('td.expand a.ok_button').trigger('click');
-				},1000);
+				// Save Change
+				$checkedTransasctions.find('td.expand a.ok_button').trigger('click');
 			});
 
 			// Add Checkboxes
-			$transactions.find('td:first-child').append('<input type="checkbox" class="multi"/>');
-			$checkboxes = $transactions.find(':checkbox.multi');
-
+			$transactions.find('td:first-child').prepend('<input type="checkbox" class="multi"/>');
+			
 			// Done
 		});
 	};
