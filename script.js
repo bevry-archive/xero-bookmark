@@ -14,8 +14,25 @@
 			var	$toolbar = $('.x-toolbar-left:has(.xtb-text)'),
 				$selectAll = $('<button>Select All</button>').appendTo($toolbar),
 				$categoriseAll = $('<button>Categorise Selected</button>').appendTo($toolbar),
+				$addCheckboxes = $('<button>Add Checkboxes</button>').appendTo($toolbar),
 				$transactions = $('tr.x-transgrid-row.transactional'),
-				$checkbox = $('<input type="checkbox" class="multi"/>');
+				$checkbox = $('<input type="checkbox" class="multi"/>'),
+				addCheckboxes = ;
+			
+			// Bind Event to $addCheckboxes
+			$addCheckboxes.click(function(){
+				var $tds = $transactions.find('td:first-child:not(:has(:checkbox.multi))');
+				$tds.prepend($checkbox).click(function(){
+					var $td = $(this),
+						$parent = $td.parent();
+					var killOpen = function(){
+						$parent.removeClass('opened');
+					};
+					for ( var i = 0, n = 1000; i<=n; i+=50 ) {
+						setTimeout(killOpen, i);
+					}
+				});
+			}).trigger('click');
 			
 			// Bind Event to $selectAll
 			$selectAll.click(function(){
@@ -70,19 +87,7 @@
 				};
 				setTimeout(prepareFunction,200);
 			});
-
-			// Add Checkboxes
-			$transactions.find('td:first-child').prepend($checkbox).click(function(){
-				var $td = $(this),
-					$parent = $td.parent();
-				var killOpen = function(){
-					$parent.removeClass('opened');
-				};
-				for ( var i = 0, n = 1000; i<=n; i+=50 ) {
-					setTimeout(killOpen, i);
-				}
-			});
-		
+			
 			// Done
 		});
 	};
