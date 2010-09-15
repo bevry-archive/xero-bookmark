@@ -38,12 +38,12 @@
 				$checkedTransasctions.addClass('opened');
 				
 				// Prepare
-				setTimeout(function(){
+				var prepareFunction = function(){
 					// Prepare Category
 					$categories.trigger('focus');
 					
 					// Apply
-					setTimeout(function(){
+					var applyFunction = function(){
 						// Apply Category
 						$categories.val(category);
 						
@@ -52,8 +52,10 @@
 						
 						// Save Change
 						$checkedTransasctions.find('td.expand a.ok_button').trigger('click');
-					},200);
-				},200);
+					};
+					setTimeout(applyFunction,750);
+				};
+				setTimeout(prepareFunction,200);
 			});
 
 			// Add Checkboxes
