@@ -31,8 +31,8 @@
 				$checkedTransasctions.addClass('opened');
 				
 				// Apply Category
-				$checkedTransasctions.find('td.expand div.fields.edit-name label.category :text').val(category);
-	
+				$checkedTransasctions.find('td.expand div.fields.edit-name label.category :text').val(category).trigger('blur');
+				
 				// Save Change
 				$checkedTransasctions.find('td.expand a.ok_button').trigger('click');
 			});
