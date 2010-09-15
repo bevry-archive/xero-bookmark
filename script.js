@@ -43,7 +43,7 @@
 
 			// Done
 		});
-	});
+	};
 
 	// Prepare
 	var jqueryInserted = null;
