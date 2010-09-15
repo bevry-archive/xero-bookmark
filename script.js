@@ -14,9 +14,7 @@
 			var	$toolbar = $('.x-toolbar-left:has(.xtb-text)'),
 				$categoriseAll = $('<button>Categorise All</button>').appendTo($toolbar),
 				$transactions = $('tr.x-transgrid-row.transactional'),
-				$checkbox = $('<input type="checkbox" class="multi"/>').click(function(){
-					$(this).parents('tr.x-transgrid-row.transactional:first').removeClass('opened');
-				});
+				$checkbox = $('<input type="checkbox" class="multi"/>');
 
 			// Bind Event to $categoriseAll
 			$categoriseAll.click(function(){
@@ -40,8 +38,14 @@
 			});
 
 			// Add Checkboxes
-			$transactions.find('td:first-child').prepend($checkbox);
-			
+			$transactions.find('td:first-child').click(function(){
+				var killOpen = function(){
+					$(this).parent().removeClass('opened');
+				};
+				killOpen();
+				setTimeout(killOpen, 100);
+			}).prepend($checkbox);
+		
 			// Done
 		});
 	};
