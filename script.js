@@ -37,10 +37,11 @@
 				$checkedTransasctions.addClass('opened');
 				
 				// Apply Category
-				$checkedTransasctions.find('td.expand div.fields.edit-name label.category :text').val(category).trigger('blur');
+				$checkedTransasctions.find('td.expand div.fields.edit-name label.category :text').val(category);
 				
 				// Save Change
-				$checkedTransasctions.find('td.expand a.ok_button').trigger('click');
+				// $checkedTransasctions.find('td.expand a.ok_button').trigger('click');
+				// Can't get this to work
 			});
 
 			// Add Checkboxes
