@@ -50,6 +50,7 @@
 				var killOpen = function(){
 					$td.parent().removeClass('opened');
 				};
+				killOpen();
 				for ( var i = 0, n = 1000; i<=n; i+=100 ) {
 					setTimeout(killOpen, i);
 				}
