@@ -11,7 +11,7 @@
 		// Upgrade Xero
 		$(function(){
 			// Prepare
-			var	$toolbar = $('#x-toolbar-left'),
+			var	$toolbar = $('.x-toolbar-left:has(.xtb-text)'),
 				$categoriseAll = $('<button>Categorise All</button>').appendTo($toolbar),
 				$transactions = $('.x-transgrid-row.transactional'),
 				$checkboxes = $;
