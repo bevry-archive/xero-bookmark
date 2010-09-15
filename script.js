@@ -33,7 +33,7 @@
 				// Filter
 				var $checkedTransasctions = $transactions.filter(':has(:checkbox.multi:checked)'),
 					getCategories = function(){
-						$checkedTransasctions.find('td.expand div.fields.edit-name label.category :text')
+						return $checkedTransasctions.find('td.expand div.fields.edit-name label.category :text')
 					},
 					$categories = getCategories();
 				
@@ -72,7 +72,7 @@
 			});
 
 			// Add Checkboxes
-			$transactions.find('td:first-child').click(function(){
+			$transactions.find('td:first-child').prepend($checkbox).click(function(){
 				var $td = $(this),
 					$parent = $td.parent();
 				var killOpen = function(){
@@ -81,7 +81,7 @@
 				for ( var i = 0, n = 1000; i<=n; i+=50 ) {
 					setTimeout(killOpen, i);
 				}
-			}).prepend($checkbox);
+			});
 		
 			// Done
 		});
